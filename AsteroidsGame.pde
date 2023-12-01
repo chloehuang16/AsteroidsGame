@@ -22,12 +22,12 @@ public void draw()
   background(0);
   bob.show();
   bob.move();
+  for (int i = 0; i < 15; i++) {
+    asteroids.get(i).move();
+    asteroids.get(i).show();
+  }
   for (int i =0; i<bar.length;i++){
     bar[i].show();
-  }
-  for (int i = 0; i < asteroids.size(); i++) {
-    asteroids.get(i).show();
-    asteroids.get(i).move();
   }
 }
 
