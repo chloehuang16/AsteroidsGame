@@ -25,6 +25,9 @@ public void draw()
   for (int i = 0; i < 15; i++) {
     asteroids.get(i).move();
     asteroids.get(i).show();
+    double distance = dist((float)bob.getCenterX(), (float)bob.getCenterY(), (float)asteroids.get(i).getCenterX(), (float)asteroids.get(i).getCenterY());
+    if(distance<23) {
+      asteroids.remove(i);
   }
   for (int i =0; i<bar.length;i++){
     bar[i].show();
