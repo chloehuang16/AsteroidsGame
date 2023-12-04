@@ -22,17 +22,12 @@ public void draw()
   background(0);
   bob.show();
   bob.move();
+  for (int i = 0; i < 15; i++) {
+    asteroids.get(i).move();
+    asteroids.get(i).show();
+  }
   for (int i =0; i<bar.length;i++){
     bar[i].show();
-  }
-  for (int i = 0; i < asteroids.size(); i++) {
-    asteroids.get(i).show();
-    asteroids.get(i).move();
-    float d = dist((float)bob.getMyCenterX(), (float)bob.getMyCenterY(), (float)asteroids.get(i).getX(), (float)asteroids.get(i).getY());
-
-    if (d < 10) {
-      asteroids.remove(i);
-    }
   }
 }
 
