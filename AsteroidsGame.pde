@@ -50,14 +50,14 @@ void draw() {
   for (int i = 0; i < asteroids.size(); i++) {
     asteroids.get(i).show();
     asteroids.get(i).move();
-    float d = dist((float) bob.myCenterX, (float) bob.myCenterY, (float) asteroids.get(i).getX(), (float) asteroids.get(i).getY());
+    float d = dist((float) bob.myCenterX, (float) bob.myCenterY, (float) asteroids.get(i).getCenterX(), (float) asteroids.get(i).getCenterY());
 
     if (d < 10) {
       asteroids.remove(i);
     }
 
     for (int j = 0; j < bow.size(); j++) {
-      double distance2 = dist((float) bow.get(j).getCenterX(), (float) bow.get(j).getCenterY(), (float) asteroids.get(i).getX(), (float) asteroids.get(i).getY());
+      double distance2 = dist((float) bow.get(j).getCenterX(), (float) bow.get(j).getCenterY(), (float) asteroids.get(i).getCenterX(), (float) asteroids.get(i).getCenterY());
       if (distance2 < 20) {
         asteroids.remove(i);
         bow.remove(j);
