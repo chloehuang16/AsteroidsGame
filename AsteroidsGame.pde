@@ -2,7 +2,7 @@ Spaceship bob;
 Star[] bar;
 ArrayList<Asteroid> asteroids;
 ArrayList<Bullet> bow;
-
+int score = 0;
 void setup() {
   size(500, 500);
   bob = new Spaceship();
@@ -50,15 +50,16 @@ void draw() {
   for (int i = 0; i < asteroids.size(); i++) {
     asteroids.get(i).show();
     asteroids.get(i).move();
-    float d = dist((float) bob.myCenterX, (float) bob.myCenterY, (float) asteroids.get(i).getCenterX(), (float) asteroids.get(i).getCenterY());
+    float d = dist((float) bob.myCenterX, (float) bob.myCenterY, (float) asteroids.get(i).getX(), (float) asteroids.get(i).getY());
 
     if (d < 10) {
       asteroids.remove(i);
     }
 
     for (int j = 0; j < bow.size(); j++) {
-      double distance2 = dist((float) bow.get(j).getCenterX(), (float) bow.get(j).getCenterY(), (float) asteroids.get(i).getCenterX(), (float) asteroids.get(i).getCenterY());
+      double distance2 = dist((float) bow.get(j).getCenterX(), (float) bow.get(j).getCenterY(), (float) asteroids.get(i).getX(), (float) asteroids.get(i).getY());
       if (distance2 < 20) {
+        score++;
         asteroids.remove(i);
         bow.remove(j);
         break;
@@ -70,4 +71,7 @@ void draw() {
     bow.get(i).move();
     bow.get(i).show();
   }
+  fill(255);
+  textSize(20);
+  text("Score: " + score, 20, 20);
 }
