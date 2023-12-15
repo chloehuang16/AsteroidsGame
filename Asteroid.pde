@@ -1,44 +1,46 @@
-class Asteroid extends Floater {
-  
-  private double rotateSpeed;
-  
-  public Asteroid() {
-    myColor = 100;
-    myCenterX = Math.random()*500;
-    myCenterY = Math.random()*500;
-    myXspeed = 0;
-    myYspeed = 0;
-    myXspeed = (Math.random()*4)-2;
-    myYspeed = (Math.random()*4)-2;
-    myPointDirection = 0;
-    corners = 6;
-    xCorners = new int[corners];
-    yCorners = new int[corners];        
-    xCorners[0] = -11;
-    yCorners[0] = -8;
-    xCorners[1] = -15;
-    yCorners[1] = 0;
-    xCorners[2] = -11;
-    yCorners[2] = 8; 
-    xCorners[3] = 6;
-    yCorners[3] = 10;
-    xCorners[4] = 13;
-    yCorners[4] = 0;
-    xCorners[5] = 7;
-    yCorners[5] = -8;
-    rotateSpeed = (Math.random()*8)-4;
+class Asteroid extends Floater
+{
+  private double rotSpeed; 
+  public Asteroid(){
+    corners = 7;
+    xCorners = new int[]{-12,0,12,9,9,0,-9};
+    yCorners = new int[]{-6,-15,-12,-3,6,9,9};
+    myCenterX = Math.random()*600;
+    myCenterY = Math.random()*600;   
+    myXspeed = (Math.random()*5)-3;
+    myYspeed = (Math.random()*5)-3; 
+    myColor = #4B4242;
   }
   
-  public void move() {
-    turn(rotateSpeed);
-    super.move();
-  }
+   public void move(){
+     turn(rotSpeed);
+     myCenterX += myXspeed;
+     myCenterY += myYspeed;
+     if(myCenterX >width)
+     {     
+        myCenterX = 0;    
+     }    
+     else if (myCenterX<0)
+     {     
+       myCenterX = width;    
+     }    
+     if(myCenterY >height)
+     {    
+      myCenterY = 0;    
+     } 
+    
+     else if (myCenterY < 0)
+     {     
+       myCenterY = height;    
+     }   
+   }
   
-  public double getCenterX() {
-    return myCenterX;
-  }
   
-  public double getCenterY() {
-    return myCenterY;
-  }
+    public double getX(){
+      return myCenterX;
+    }
+  
+    public double getY(){
+      return myCenterY;
+    }
 }
